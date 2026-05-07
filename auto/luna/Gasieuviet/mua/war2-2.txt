@@ -1,0 +1,186 @@
+﻿#name("war22 accchinh")
+getscreen
+#autorun
+$tk = TFREAD("TaiKhoan\\taikhoan.txt",1)
+$wnd1 = wndfind($tk)
+$x=0
+$y=0
+$d=300
+$r=200
+WNDSETINFO($wnd1,$x,$y,$d,$r)
+hset($wnd1,1)
+
+waitms(30)
+LCLICK(1,1)
+
+ $Lmh = $Lmh + 1
+ 
+#includer("scrip.xml")
+#includer("ht\mknwar.txt")
+//#includer("ht\moibanwar.txt")
+
+ getscreen
+   if( $Guild = 2)
+      $m = 132
+   else
+      $m = 150
+   end_if
+
+
+//------------------------------------
+
+ //-----------relog----------------
+if($wnd1 = 0)
+    $re=$re+1
+   print( "Relog:  ",$re)
+$loimkn = 0
+$Lmh = 0
+   wait(3)
+StrWriteln("nhatky3.txt",$re)
+end_if
+
+
+
+
+getscreen
+
+
+
+//-----vao phong sanh
+if_pixel_in(19,134,19,134,2641784,1259366) 
+LCLICK(167,45)  // 3288087
+print(" Vao phong sanh ")
+waitms(2000)
+end_if 
+
+//-----vao phong game 
+if(pxl(91,38) = 14875647)
+LCLICK(196,138)  // 3242917
+print(" Vao phong game ")
+waitms(1000)
+end_if 
+
+
+ //-----thoat neu vo nham phong
+if(pxl(287,170) = 6065572)
+LCLICK(271,148)  // 6066858
+print(" thoat vo nham phong ")
+waitms(1000)
+end_if 
+
+
+
+
+// thoat neu khong moi duoc
+   if($moi >=5)
+  LCLICK(273,150)  // 5545976
+ waitms(2000)
+      $moi=0
+   end_if
+   
+   
+   
+Logwrite( pxl(97,63))   
+//-----moi ban be
+if_pixel_in(97,63,97,63,13165814) 
+print(" moi ban ")
+LCLICK(226,132)  // 5275023
+waitms(1000)
+
+      LCLICK($m,47) // ban be
+      waitms(500)
+      LCLICK(164,57)  // mo rong
+      waitms(500)
+      LCLICK(164,64)  // 473198
+      waitms(200)
+//      LCLICK(165,72)  // 6332101
+//      waitms(200)
+//      LCLICK(165,82)  // 1390680
+//      waitms(200)
+      LCLICK(176,34)  // dau x
+      $moi = $moi +1
+      waitms(2000)
+
+else
+
+//-----bat dau
+if(pxl(270,169) = 13498623)
+
+print(" bat dau ")  
+
+
+//xoa dao cu
+LCLICK(232,42)  // 463392
+waitms(50)
+LCLICK(250,42)  // 69145
+waitms(50)
+LCLICK(268,41)  // 4825041
+
+waitms(200)
+
+//click dan dat
+LCLICK(257,64)  // 1126222
+waitms(50)
+LCLICK(257,64)  // 1126222
+waitms(50)
+LCLICK(257,64)  // 1126222
+
+waitms(500)
+
+//click bat dau
+LCLICK(267,132)  // 1387850
+
+
+$phonggame = 0
+$Lmh = 0
+$Turn = 0
+$loilatthe = 0
+$loiss = 0
+$loi55 = 0
+$vitri = 0
+
+end_if 
+end_if 
+
+
+warkill()
+
+
+//thoat game
+if($Turn >= 50) 
+LCLICK(279,4)  // 13743513
+waitms(1000)
+LCLICK(115,96)  // 1322819
+print(" thoat game ") 
+waitms(1000)
+end_if
+
+// -----win
+ if(pxl(282,48) = 5957117)
+ 
+ $win = $win +1
+   $sotran =  $Win + $lose
+  print(" Win: ", $Win ,  " lose: ", $lose, "  sotran ",$Win+$lose, "  relog ",$re)
+
+   waitms(1000)
+StrWriteln("nhatky1.txt",$Win)
+
+   waitms(6000)
+	end_if
+
+//----- lose
+ if(pxl(274,36) = 16777215)
+ $lose = $lose +1
+ $sotran =    $Win+$lose
+  print(" Win: ", $Win ,  " lose: ", $lose, "  sotran ",$Win+$lose, "  relog ",$re)
+   
+   
+    waitms(1000)
+   $nhatky[0] = $Win
+$nhatky[1] = $lose
+$nhatky[2] = $re
+StrWriteln("Nhatky2.txt",$lose)
+
+
+    waitms(6000)
+end_if

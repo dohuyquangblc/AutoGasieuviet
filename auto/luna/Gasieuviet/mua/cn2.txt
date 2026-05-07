@@ -1,0 +1,61 @@
+﻿#name: "hop thanh"
+getscreen
+#autorun
+$tk = TFREAD("taikhoan\\taikhoan.txt",1)     //tài khoan
+$hwnd1 = wndfind($tk)
+$x= 939
+$y= 0
+$d=500
+$r=350
+WNDSETINFO($hwnd1,$x,$y,$d,$r)
+
+//lockwin
+$hwnd1 = wndfind($tk)
+hset($hwnd1,1)
+LCLICK(247,-14)  // 0
+
+
+getscreen
+
+
+if_pixel_in(212,128,212,128,3250585)
+print("tat goi y ")
+LCLICK(287,179)  // 6531536
+end_if
+ 
+if_pixel_in(212,128,212,128,1999461,1977237)
+$hopthanh =  $hopthanh+1
+print("Dang hop thanh ",$hopthanh) 
+ 
+waitms(1000)  	
+DBLCLICK(271,201)  // 1
+for($roll = 0, $roll < 50)
+LCLICK(153,280)  // hop thanh  
+waitms(50)  
+end_cyc	 
+
+waitms(1000) 
+DBLCLICK(293,198)  // 2
+waitms(500) 
+for($roll = 0, $roll < 50)
+LCLICK(153,280)  // 3
+waitms(50) 
+end_cyc	
+
+waitms(1000) 
+DBLCLICK(317,199)  // 3
+waitms(500) 
+for($roll = 0, $roll < 50)
+LCLICK(153,280)  // hop thanh
+waitms(50) 
+end_cyc		 
+
+waitms(1000) 	 
+DBLCLICK(341,198)  // 4
+waitms(500) 
+for($roll = 0, $roll < 50)
+LCLICK(153,280)  // hop thanh
+waitms(50) 
+end_cyc	 
+
+end_if

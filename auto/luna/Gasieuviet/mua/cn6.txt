@@ -1,0 +1,159 @@
+﻿#name :"Nhiem vu thang"
+Getscreen
+#autorun
+#includer("scrip.xml") 
+
+$file_progress = "progress.txt"
+
+IF (TFCOUNT($file_progress) > 1 ) //Kiem tra xem file di den pho ban nao va duoc bao nhieu lan 
+   $phoban = TFREAD($file_progress, 1)
+   $count = TFREAD($file_progress, 2)
+ELSE
+   $phoban = 1
+   $count = 1
+END_IF
+
+WHILE($phoban <= 12)
+   WHILE($count <= 24)
+      //logwrite("Đang di pho ban ", $phoban, " so lan : ", $count)
+      
+      SWITCH($phoban)
+
+//------------------------- Tuần 3-----------
+         CASE(1)
+team(1,1,2) 
+moiban()
+batdau()
+chonpb(2,2,1,1)
+tc2()
+latthe()
+           CASE(2)
+
+team(1,1,2)
+moiban()
+batdau()
+chonpb(2,3,1,1)
+tc3()
+latthe()
+       
+           CASE(3)
+               
+team(1,1,2)
+moiban()   
+batdau()
+chonpb(2,4,1,1)
+tc4()
+latthe()
+
+         CASE(4)
+team(1,1,2)
+moiban()
+batdau()
+chonpb(2,5,1,1)
+tc5()
+latthe()
+//------------------------- Tuần 2-----------
+
+         CASE(5)
+team(1,1,2) 
+moiban()
+batdau()
+chonpb(1,10,1,1)
+sc10()
+latthe()
+
+         CASE(6)
+team(1,1,2)            
+moiban()
+batdau()
+chonpb(1,11,1,1)
+sc11()
+latthe()
+
+         CASE(7)
+team(1,1,2)
+moiban()
+batdau()
+chonpb(1,12,1,1)
+sc12()
+latthe()
+
+
+
+         CASE(8)
+team(1,1,2)
+moiban()
+batdau()
+chonpb(1,13,1,1)
+sc13()
+latthe()
+//------------------------- Tuần 2-----------
+         CASE(9)
+team(1,1,2)
+moiban()
+batdau()
+chonpb(1,6,1,1)
+sc6()
+latthe()
+
+         CASE(10)
+team(1,1,2)
+moiban()
+batdau()
+chonpb(1,7,1,1)
+sc7()
+latthe()
+
+         CASE(11)
+team(1,1,2)
+moiban()
+batdau()
+chonpb(1,8,1,1)
+sc8()
+latthe()
+
+         CASE(12)
+team(1,1,2)
+moiban()
+batdau()
+chonpb(1,9,1,1)
+sc9()
+latthe()
+//-------------------------------------
+
+
+      END_SWITCH
+
+      if_pixel_in(372,120,372,120,2112766)  //Neu win tang so lan $count len 1 
+      logwrite("cong 1")
+         inc($count, 1)
+         wait(4)
+         TFWRITE($file_progress, $phoban, 1)  //Ghi pho ban dang di vao file
+         TFWRITE($file_progress, $count, 2) //Ghi so lan di pho ban vao file
+logwrite("Đang di pho ban ", $phoban, " so lan : ", $count)
+
+$nhatky4 = StrConcat ("Đang đi phó bản: ",$phoban, "     số lần: ",$count)
+StrWriteln("Nhatky4.txt", $nhatky4)
+
+end_if
+
+   END_CYC
+			//======Sau khi di het 10 lan cua 1 pho ban thi tang pho ban $phoban len 1 de sang pho ban khac 
+   inc($phoban, 1)
+   //====Khi tang sang pho ban khac thi reset lai so lan di pho ban
+   $count = 1
+   TFWRITE($file_progress, $phoban, 1) //Ghi pho ban dang di tiep theo 
+   TFWRITE($file_progress, $count, 2)  // Ghi so lan di pho ban tiep theo
+END_CYC
+logwrite("Hoàn thành tất cả 20 PHÓ BẢN.")
+
+$nhatky4 = StrConcat ("Hoàn thành nv hàng ngày ")
+StrWriteln("Nhatky4.txt", $nhatky4)
+
+HALT
+
+
+
+
+
+	

@@ -1,0 +1,101 @@
+﻿#name("war22 clone2")
+#autorun
+$tk = TFREAD("TaiKhoan\\taikhoan.txt",2)
+$wnd1 = wndfind($tk)
+$x=286
+$y=0
+$d=300
+$r=200
+WNDSETINFO($wnd1,$x,$y,$d,$r)
+hset($wnd1,1)
+
+waitms(30)
+LCLICK(1,1)
+
+ $Lmh = $Lmh + 1
+
+ if($Lmh >= 9300)
+   POSTMESSAGE($wnd1,0x0010,0,0)
+   print("F5 lai sau 30p" )
+
+$Lmh = 0
+   wait(3)
+   end_if
+   
+   
+// ----thoat neu qua 55 giay
+if(pxl(275,168) = 861770)
+   $loi55 = $loi55 + 1
+//print("loi 55 giay: " $loi55)
+   waitms(1000)
+end_if
+
+
+if ($loi55 >= 60)
+print("loi 55 giay: " $loi55)
+
+LCLICK(269,133)  // dung
+waitms(1000)
+LCLICK(272,150)  // thoat
+waitms(1000)
+$loi55 = 0
+end_if 
+   
+
+getscreen
+
+//Logwrite( pxl(275,168))  
+
+
+//-----vao phong sanh
+if_pixel_in(19,134,19,134,2641784,1259366) 
+
+LCLICK(181,150)  // tui
+waitms(2000)
+LCLICK(52,12)  // mo tool
+ waitms(1000)
+LCLICK(89,34)  // bat tool
+waitms(1000)
+LCLICK(241,13)  //tat tool
+waitms(1000)
+LCLICK(257,13)  // tat tui
+waitms(2000)
+
+
+LCLICK(167,45)  // 3288087
+print(" Vao phong sanh ")
+waitms(2000)
+end_if 
+
+
+
+
+//-----vao phong game 
+if(pxl(91,38) = 14613503)
+
+LCLICK(196,138)  // 3242917
+print(" Vao phong game ")
+waitms(1000)
+end_if 
+
+
+ //-----thoat neu vo nham phong
+if(pxl(287,170) = 861770)
+LCLICK(271,148)  // 6066858
+print(" thoat vo nham phong ")
+waitms(1000)
+end_if 
+       
+
+
+
+//thoat game
+if($Turn >= 50) 
+LCLICK(279,4)  // 13743513
+waitms(1000)
+LCLICK(115,96)  // 1322819
+print(" thoat game ") 
+waitms(1000)
+end_if
+
+
